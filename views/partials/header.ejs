@@ -20,7 +20,7 @@
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Sign Up</a></li>
                     <% } else { %>
-                    <li><a class="capitalize"><i class="fas fa-user"></i>  <%= currentUser.username %></a></li>
+                    <li><a class="capitalize"><i class="fas fa-user"></i>  <%= currentUser.username %><br><% if (currentUser && currentUser.isAdmin) { %><p id="admin">ADMIN</p><% }%></a></li>
                     <li><a href="/logout">Logout</a></li>
                     <% } %>
                 </ul>

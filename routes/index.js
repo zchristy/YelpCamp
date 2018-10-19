@@ -28,12 +28,15 @@ router.get("/register", function(req, res){
 // handling user sign up logic
 router.post("/register", function(req, res){
     var newUser = new User({username: req.body.username});
+    if(req.body.adminCode == process.env.ADMIN_CODE) {
+      newUser.isAdmin = true;
+    }
     // put a new User with req.body.username as a value in the db
     User.register(newUser, req.body.password, function(err, user){
-       if(err){
-          req.flash("error", err.message);
+       if(err || !user){
+        //   req.flash("error", err.message);
           console.log(err);
-          return res.render('register');
+          return res.render('register', {error: err.message});
       } else {
         //   authenticate with a local strategy NOTE: local can be changed to facebook
         // if facebook is the authentication strategy being used

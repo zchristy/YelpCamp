@@ -4,7 +4,10 @@ var mongoose              = require('mongoose'),
 // Schema Setup
 var UserSchema = new mongoose.Schema({
    username: String,
-   password: String
+   password: String,
+   isAdmin: {
+        type: Boolean, default: false  
+   }
 });
 
 // Plugs in the passport local mongoose package allowing passport to authenticate the user

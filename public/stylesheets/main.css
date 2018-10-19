@@ -24,3 +24,9 @@
     height: 400px;
     width: 100%;
 }
+
+#admin {
+    float: right;
+    font-size: 8px;
+    color: #3B8FD5;
+}

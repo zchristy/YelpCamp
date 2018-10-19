@@ -25,7 +25,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
               res.redirect("back");
           } else {
             //   does user own the campground? using mongoose method to find if the compare
-            if(foundCampground.author.id.equals(req.user._id)){
+            if(foundCampground.author.id.equals(req.user._id) || req.user.isAdmin){
                 next();
             } else {
                 req.flash("error", "You done have permision!");
@@ -58,7 +58,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
             // this is a mongoose id, so === does not work here, we have to use
             // the method equals() provided by mongoose
             // req.user._id can be used thanks to passport
-            if(foundComment.author.id.equals(req.user._id)){
+            if(foundComment.author.id.equals(req.user._id)|| req.user.isAdmin){
                 next();
             } else {
                 req.flash("error", "You dont have permission!");
