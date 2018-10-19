@@ -21,7 +21,7 @@
                     <h4><a><%= campground.name %></a></h4>
                     <p><%= campground.description %></p>
                     <p>
-                        <em>Submited By <%= campground.author.username %></em>
+                        <em>Submited By <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %></em>
                     </p>
                     <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
                         <a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
@@ -43,7 +43,7 @@
                         <div class="col-md-12">
                             <i class="far fa-user-circle"></i>
                             <strong class="capitalize"> <%= comment.author.username %></i></strong>
-                            <span class="pull-right">10 days ago</span>
+                            <span class="pull-right"><%= moment(campground.createdAt).fromNow() %></span>
                             <p>
                                 <%= comment.text %>
                             </p>

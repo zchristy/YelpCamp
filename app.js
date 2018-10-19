@@ -15,6 +15,7 @@ var express               = require('express'),
     methodOverride        = require("method-override"),
     passportLocalMongoose = require("passport-local-mongoose");
 
+
 // ===========================================================
 // SCHEMA SETUP - used to structure objects to and from the DB
 //              - require models from a module.exports js file
@@ -80,6 +81,12 @@ app.use(flash());
 // ===========================================================
 // Call the function in seeds.js to seed the DB
 // seedDB();
+
+// ==================================================================
+// Moment.js - package Config, Now moment is available for use in 
+// all of your view files via the variable named moment
+// ==================================================================
+app.locals.moment = require('moment');
 
 // ===========================================================
 //                  PASSPORT CONFIGURATION
