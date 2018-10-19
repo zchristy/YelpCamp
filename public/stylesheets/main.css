@@ -1,0 +1,26 @@
+.thumbnail img {
+    width: 100%;
+    
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.fa-user {
+    margin-right: 3px;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.delete-form {
+    display: inline;
+}
+
+/*GOOGLE MAPS STYLING*/
+#map {
+    height: 400px;
+    width: 100%;
+}
