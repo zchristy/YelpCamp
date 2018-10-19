@@ -30,3 +30,13 @@
     font-size: 8px;
     color: #3B8FD5;
 }
+
+.admin-user {
+    color: #3B8FD5;
+}
+
+/* Flexbox grid fix */
+.flex-wrap {
+  display:flex;
+  flex-wrap: wrap;
+}
