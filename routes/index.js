@@ -27,7 +27,13 @@ router.get("/register", function(req, res){
 
 // handling user sign up logic
 router.post("/register", function(req, res){
-    var newUser = new User({username: req.body.username});
+    var newUser = new User({
+        username:  req.body.username,
+        firstName: req.body.firstName,
+        lastName:  req.body.lastName,
+        email:     req.body.email,
+        avatar:    req.body.avatar 
+    });
     if(req.body.adminCode == process.env.ADMIN_CODE) {
       newUser.isAdmin = true;
     }
@@ -74,6 +80,19 @@ router.get("/logout", function (req, res){
    req.logout();
    req.flash("success", "Logged you out!");
    res.redirect("/campgrounds");
+});
+
+// ===========================================================
+//                    USER PROFILE
+// ===========================================================
+router.get("/users/:id", function(req, res){
+   User.findById(req.params.id, function(err, foundUser){
+     if(err){
+         req.flash("error", "Something Went Wrong");
+         res.redirect("back");
+     } 
+     res.render("users/show", {user: foundUser});
+   });
 });
 
 // =======================================================
