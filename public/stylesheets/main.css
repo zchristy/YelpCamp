@@ -7,6 +7,21 @@
     padding: 0;
 }
 
+.card-shadow {
+  box-shadow: 0 16px 28px rgba(0,0,0,0.25), 0 12px 10px rgba(0,0,0,0.22);
+}
+
+.push-right {
+    display: inline-block;
+    margin-left: 30%;
+}
+
+.user-campground-list {
+    width: 22%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 .fa-user {
     margin-right: 3px;
 }
@@ -25,6 +40,7 @@
     width: 100%;
 }
 
+/*Admin*/
 #admin {
     float: right;
     font-size: 8px;

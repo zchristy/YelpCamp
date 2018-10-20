@@ -1,10 +1,11 @@
 // ========================================================================
 // PACKAGE/SCHEMA SETUP - Requiring & Calling JSON packages and Asset files
 // ========================================================================
-var express  = require("express"),
-    router   = express.Router(),
-    passport = require("passport"),
-    User     = require("../models/user");
+var express    = require("express"),
+    router     = express.Router(),
+    passport   = require("passport"),
+    User       = require("../models/user"),
+    Campground = require("../models/campground");
 
 // ===========================================================
 //                INDEX - Home Page - Root Page
@@ -82,18 +83,7 @@ router.get("/logout", function (req, res){
    res.redirect("/campgrounds");
 });
 
-// ===========================================================
-//                    USER PROFILE
-// ===========================================================
-router.get("/users/:id", function(req, res){
-   User.findById(req.params.id, function(err, foundUser){
-     if(err){
-         req.flash("error", "Something Went Wrong");
-         res.redirect("back");
-     } 
-     res.render("users/show", {user: foundUser});
-   });
-});
+
 
 // =======================================================
 //                  EXPORT FILE

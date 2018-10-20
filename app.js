@@ -29,6 +29,7 @@ var Comment    = require('./models/comment'),
 // =================================================================
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
+    userRoutes       = require("./routes/users"),
     indexRoutes      = require("./routes/index");
 
 // ===========================================================
@@ -134,6 +135,7 @@ app.use(function(req, res, next){
 // ==================================================================
 app.use(indexRoutes);
 app.use("/campgrounds", campgroundRoutes);
+app.use("/users/:id", userRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 
 // ===========================================================

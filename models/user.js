@@ -9,6 +9,9 @@ var UserSchema = new mongoose.Schema({
    firstName: String,
    lastName: String,
    email: String,
+   aboutMe: String,
+   homeTown: String,
+   yearsCamping: String,
    isAdmin: {
         type: Boolean, default: false  
    }
