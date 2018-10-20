@@ -2,7 +2,8 @@
 // SCHEMA SETUP - used to structure objects to and from the DB
 //              - require models from a module.exports js file
 // ===========================================================
-var Campground = require("../models/campground"),
+var User = require("../models/user"),
+    Campground = require("../models/campground"),
     Comment    = require("../models/comment");
 
 // =================================================================

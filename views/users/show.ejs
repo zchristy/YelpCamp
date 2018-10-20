@@ -14,17 +14,32 @@
                             <h4 class="">Member</h4>
                         <% } %>
                     </span>
-                    
-                </div>
-            </div>
-            <div class="list-group card-shadow">
-                
-                <% if(currentUser || currentUser && currentUser.isAdmin){ %>
-                        <a class="btn btn-xs btn-warning" href="/users/<%= user._id %>/edit">Edit</a>
-                        <form class="delete-form" action="/users/<%= user._id %>?_method=DELETE" method="POST">
-                            <button class="btn btn-xs btn-danger">Delete</button>
-                        </form>
+                    <% if (!user.aboutMe && !user.homeTown && !user.yearsCamping) { %>
+                        <div class="list-unstyled user-profile-about">
+                            <li class=" text-left"><h5>About Me</h5></li>
+                            <hr class="hr-card">
+                            <li class=" text-left"><h5>Hometown</h5></li>
+                            <hr class="hr-card">
+                            <li class=" text-left"><h5>Years Camping</h5></li>
+                            <a class="text-right" href="/users/<%= user._id %>/edit"><h4><small>Edit Profile</small></h4></a>
+                        </div>
+                    <% } else { %>
+                            <div class="list-unstyled user-profile-about text-center">
+                                <li class=""><em>"<%= user.aboutMe %>"</em></li>
+                                <hr class="hr-card">
+                                <li class="">
+                                    <h5><strong>Hometown</strong></h5>
+                                    <p class="capitalize"><%= user.homeTown %></p>
+                                </li>
+                                <hr class="hr-card">
+                                <li class="">
+                                    <h5><strong>Years Camping</strong></h5>
+                                    <p class="capitalize"><%= user.yearsCamping %></p>
+                                </li>
+                                <a class="text-right" href="/users/<%= user._id %>/edit"><h4><small>Edit Profile</small></h4></a>
+                            </div>
                     <% } %>
+                </div>
             </div>
         </div>
         <div class="col-md-8">
