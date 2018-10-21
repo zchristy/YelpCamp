@@ -27,13 +27,7 @@ router.get("", function(req, res){
             req.flash("error", "Something Went Wrong");
             res.redirect("back");
         }
-        Comment.find().where('author.id').equals(foundUser._id).exec(function(err, comments) {
-            if(err){
-                req.flash("error", "Something went wrong");
-                res.redirect("back");
-            }
-            res.render("users/show", {user: foundUser, campgrounds: campgrounds, comments: comments});
-        });
+            res.render("users/show", {user: foundUser, campgrounds: campgrounds});
      });
    });
 });

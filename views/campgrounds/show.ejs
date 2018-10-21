@@ -43,7 +43,7 @@
                         <div class="col-md-12">
                             <img class="header-avatar" src="<%= comment.author.avatar %>">
                             <strong class="capitalize"> <%= comment.author.username %></i></strong>
-                            <span class="pull-right"><%= moment(campground.createdAt).fromNow() %></span>
+                            <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
                             <p>
                                 <%= comment.text %>
                             </p>
