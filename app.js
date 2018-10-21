@@ -39,7 +39,7 @@ var commentRoutes    = require("./routes/comments"),
 // this is an Enviroment variable
 var url = process.env.DATABASEURL || 'mongodb://localhost:27017/yelp_camp';
 // mongoose.connect('mongodb://localhost:27017/yelp_camp');
-mongoose.connect(url);
+mongoose.connect(url, { useNewUrlParser: true });
 // mongoose.connect('mongodb://<insert username here>:<insert password here>@ds135993.mlab.com:35993/zc_yelp_camp');
 // added this to config var in Heroku settings
 // (export ENVIRMONTVARIABLE = "KEY") is used to set private information out of sight
