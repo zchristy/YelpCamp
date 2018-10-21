@@ -36,7 +36,6 @@ var commentRoutes    = require("./routes/comments"),
 //                  MONGOOSE CONFIGURATION
 // ===========================================================
 // getting-started.js with mongoose.... connecting mongo data base
-// this is an Enviroment variable
 var url = process.env.DATABASEURL || 'mongodb://localhost:27017/yelp_camp';
 // mongoose.connect('mongodb://localhost:27017/yelp_camp');
 mongoose.connect(url);

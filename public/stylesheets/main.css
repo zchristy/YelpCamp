@@ -1,3 +1,7 @@
+a, a:hover, a:focus {
+    text-decoration: none;
+}
+
 .hr-card {
     border: 0;
     width: 70%;
@@ -50,6 +54,10 @@
 
 .delete-form {
     display: inline;
+}
+
+.comment-col {
+    margin-bottom: 10px;
 }
 
 /*GOOGLE MAPS STYLING*/

@@ -40,7 +40,7 @@
                 <hr>
                 <% campground.comments.forEach(function(comment){ %>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 comment-col">
                             <img class="header-avatar" src="<%= comment.author.avatar %>">
                             <strong class="capitalize"> <%= comment.author.username %></i></strong>
                             <span class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
@@ -48,9 +48,9 @@
                                 <%= comment.text %>
                             </p>
                             <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
-                                <a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                                <a class="" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
                                 <form class="delete-form" action="/campgrounds/<%=campground._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST">
-                                    <button class="btn btn-xs btn-danger">Delete</button>
+                                    <input class="btn-link" type="submit" value="Delete">
                                 </form>
                             <% } %>
                         </div>
