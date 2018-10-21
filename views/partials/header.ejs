@@ -20,21 +20,21 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <% if(!currentUser){ %>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Sign Up</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Sign Up</a></li>
                     <% } else { %>
-                    <li>
-                        <a class="capitalize" href="/users/<%= currentUser.id %>">
-                            <img class="header-avatar" src="<%= currentUser.avatar %>">
-                            <%= currentUser.username %>
-                            <span class="vcenter">
-                                <% if (currentUser && currentUser.isAdmin) { %>
-                                    <p id="admin">:ADMIN</p>
-                                <% }%> 
-                            </span>
-                        </a>
-                    </li>
-                    <li><a href="/logout">Logout</a></li>
+                            <li>
+                                <a class="capitalize" href="/users/<%= currentUser.id %>">
+                                    <img class="header-avatar" src="<%= currentUser.avatar %>">
+                                    <%= currentUser.username %>
+                                    <span>
+                                        <% if (currentUser && currentUser.isAdmin) { %>
+                                            <p id="admin">:ADMIN</p>
+                                        <% }%> 
+                                    </span>
+                                </a>
+                            </li>
+                            <li><a href="/logout">Logout</a></li>
                     <% } %>
                 </ul>
             </div>
