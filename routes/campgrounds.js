@@ -3,6 +3,7 @@
 // ========================================================================
 var express      = require("express"),
     router       = express.Router(),
+    User         = require("../models/user")
     Campground   = require("../models/campground"),
     NodeGeocoder = require('node-geocoder');
     

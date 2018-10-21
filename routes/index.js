@@ -49,7 +49,7 @@ router.post("/register", function(req, res){
         // if facebook is the authentication strategy being used
           passport.authenticate("local")(req, res, function(){
              req.flash("success",  "Welcome to Yelp Camp " + user.username[0].toUpperCase() + user.username.substring(1));
-             res.redirect("/campgrounds");
+             res.redirect("/user/:id");
           });
       }
    });

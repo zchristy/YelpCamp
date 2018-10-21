@@ -21,7 +21,9 @@
                             <li class=" text-left"><h5>Hometown</h5></li>
                             <hr class="hr-card">
                             <li class=" text-left"><h5>Years Camping</h5></li>
-                            <a class="text-right" href="/users/<%= user._id %>/edit"><h4><small>Edit Profile</small></h4></a>
+                            <% if (user._id === currentUser._id || currentUser.isAdmin) { %>
+                                <a class="text-right" href="/users/<%= user._id %>/edit"><h4><small>Edit Profile</small></h4></a>
+                            <% } %>
                         </div>
                     <% } else { %>
                             <div class="list-unstyled user-profile-about text-center">

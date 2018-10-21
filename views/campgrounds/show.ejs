@@ -41,7 +41,7 @@
                 <% campground.comments.forEach(function(comment){ %>
                     <div class="row">
                         <div class="col-md-12">
-                            <i class="fas fa-user"></i>
+                            <img class="header-avatar" src="<%= comment.author.avatar %>">
                             <strong class="capitalize"> <%= comment.author.username %></i></strong>
                             <span class="pull-right"><%= moment(campground.createdAt).fromNow() %></span>
                             <p>

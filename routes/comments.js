@@ -3,6 +3,7 @@
 // ========================================================================
 var express    = require("express"),
     router     = express.Router({mergeParams: true}),
+    User       = require("../models/user"),
     Campground = require("../models/campground"),
     Comment    = require("../models/comment");
 
@@ -48,9 +49,10 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                     req.flash("error", "ERROR: Your Comment could not be created.");
                     console.log(err);
                 } else {
-                    // add username and id to comment
-                    comment.author.id = req.user._id;
+                    // add username, id, and avatar to comment
+                    comment.author.id       = req.user._id;
                     comment.author.username = req.user.username;
+                    comment.author.avatar   = req.user.avatar;
                     // save comment
                     comment.save();
                     // connect new comment to campground
