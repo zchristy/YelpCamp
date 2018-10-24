@@ -21,9 +21,9 @@
                             <li class=" text-left"><h5>Hometown</h5></li>
                             <hr class="hr-card">
                             <li class=" text-left"><h5>Years Camping</h5></li>
-                            <% if (user._id === currentUser._id || currentUser.isAdmin) { %>
+                            <% if (currentUser && user._id.equals(currentUser._id) || currentUser.isAdmin) { %>
                                 <a class="text-right" href="/users/<%= user._id %>/edit"><h4><small>Edit Profile</small></h4></a>
-                            <% } %>
+                            <% } else { }%>
                         </div>
                     <% } else { %>
                             <div class="list-unstyled user-profile-about text-center">
@@ -38,7 +38,9 @@
                                     <h5><strong>Years Camping</strong></h5>
                                     <p class="capitalize"><%= user.yearsCamping %></p>
                                 </li>
-                                <a class="text-right" href="/users/<%= user._id %>/edit"><h4><small>Edit Profile</small></h4></a>
+                                <% if (currentUser && user._id.equals(currentUser._id) || currentUser.isAdmin) { %>
+                                    <a class="text-right" href="/users/<%= user._id %>/edit"><h4><small>Edit Profile</small></h4></a>
+                                <% } else { }%>
                             </div>
                     <% } %>
                 </div>
