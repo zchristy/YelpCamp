@@ -87,7 +87,11 @@ router.get("/logout", function (req, res){
 });
 
 // ===========================================================
-//                       FORGOT PASSWORD
+//                      FORGOT PASSWORD
+// ===========================================================
+
+// ===========================================================
+//  Send email to user to follow reset password page
 // ===========================================================
 // Display the forgot password page
 router.get("/forgot", function(req, res){
@@ -151,6 +155,7 @@ router.post("/forgot", function(req, res, next){
                done(err, 'done');
             });
         }
+        // callback function after async.waterfall
     ], function(err) {
         if(err){
             return next(err);
@@ -158,18 +163,26 @@ router.post("/forgot", function(req, res, next){
         res.redirect('/forgot');
     }); 
 });
+
+// ===========================================================
+//  Updating password on reset password page
+// ===========================================================
+// GET rest password page with a Unique Token and an expiration date
 router.get('/reset/:token', function(req, res){
+    // find user by token and checks if expiration time has not expired
    User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: {$gt: Date.now() } }, function(err, user){
       if (!user) {
           req.flash('error', 'Password reset token is invalid or has expired.');
           return res.redirect('/forgot');
       } else if (err) {
-                    req.flash('error', 'Something went wrong');
-                    return res.redirect('forgot');
+            req.flash('error', 'Something went wrong');
+            return res.redirect('forgot');
         }
       res.render('reset', {token: req.params.token});
    }); 
 });
+
+// Update User Password
 router.post('/reset/:token', function(req, res){
     async.waterfall([
         function(done) {
@@ -184,20 +197,24 @@ router.post('/reset/:token', function(req, res){
                 }
                 
                 if(req.body.password === req.body.confirm) {
+                    // .setPassword() is a mongoose method
                     user.setPassword(req.body.password, function(err) {
                         if (err) {
                             req.flash('error', 'Something went wrong');
                             return res.redirect('back');
                         }
+                        // Clear user token and expiration timer
                       user.resetPasswordToken = undefined;
-                      user.resetPasswordToken = undefined;
-                      
+                      user.resetPasswordExpires = undefined;
+                    //   save the new values to user
                       user.save(function(err) {
                           if (err) {
                             req.flash('error', 'Something went wrong');
                             return res.redirect('back');
                           }
+                        //   .logIn() mongoose method, automatically logs user in
                           req.logIn(user, function(err) {
+                            //   this ends the executions and moves onto next function
                              done(err, user); 
                          }); 
                       });
