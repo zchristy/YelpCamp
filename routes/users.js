@@ -16,12 +16,12 @@ var middleware = require("../middleware");
 // ===========================================================
 //                    USER PROFILE -Index
 // ===========================================================
-router.get("", function(req, res){
+router.get("/", function(req, res){
    User.findById(req.params.id, function(err, foundUser){
      if(err || !foundUser){
          req.flash("error", "Something Went Wrong");
          res.redirect("back");
-     } 
+     }
      Campground.find().where('author.id').equals(foundUser._id).exec(function(err, campgrounds) {
         if(err){
             req.flash("error", "Something Went Wrong");
@@ -49,7 +49,7 @@ router.get("/edit", function(req, res){
 // =====================================================================
 //                   USER PROFILE - Update
 // =====================================================================
-router.put("", function(req, res){
+router.put("/", function(req, res){
     User.findByIdAndUpdate(req.params.id, req.body.user, function(err, user){
         if(err || !user){
             req.flash("error", "Something went wrong!");
