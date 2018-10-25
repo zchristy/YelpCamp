@@ -72,14 +72,14 @@ router.post("/", middleware.isLoggedIn, function(req, res){
     
         // Create a new campground and save to DB
         Campground.create(newCampground, function(err, newlyCreated){
-          if(err){
-              req.flash("error", "ERROR: Your Campground could not be created.");
-              console.log(err);
-          } else {
+            if(err){
+                req.flash("error", "ERROR: Your Campground could not be created.");
+                console.log(err);
+            } else {
                 req.flash("success", "Your Campground has been Posted!");
                 // redirect back to campgrounds page
                 res.redirect("/campgrounds");
-          }
+            }
         });
         // campgrounds.push(newCampground); (v1 code)
     }); 
@@ -151,17 +151,16 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
 router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
     // destroy campground using mongoose
     Campground.findByIdAndRemove(req.params.id, function(err){
-      if(err){
-        req.flash("error", "Campground not found");
-        res.redirect("/campgrounds");
-        console.log(err);
-      } else {
-          req.flash("success", "Your Campground has been successfully deleted!");
-          // redirect somewhere
-          res.redirect("/campgrounds");
-      }
-  }); 
-    
+        if(err){
+            req.flash("error", "Campground not found");
+            res.redirect("/campgrounds");
+            console.log(err);
+        } else {
+            req.flash("success", "Your Campground has been successfully deleted!");
+            // redirect somewhere
+            res.redirect("/campgrounds");
+        }
+    }); 
 });
 
 // =======================================================
